@@ -1,0 +1,145 @@
+﻿<Window x:Name="Prozor" x:Class="StudentskaSluzbaGUI.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentskaSluzbaGUI"
+        xmlns:ns="clr-namespace:StudentskaSluzbaGUI.Localization"
+        mc:Ignorable="d"
+        Title="{ns:Loc StudentService}" Loaded="WindowLoaded" LayoutUpdated="Prozor_LayoutUpdated" SizeChanged="Window_SizeChanged" WindowStartupLocation="CenterScreen" Activated="Prozor_Activated_1" KeyDown="Prozor_KeyDown" KeyUp="Prozor_KeyUp"> <!-- centriran u odnosu na ekran -->
+    <DockPanel>
+        <Menu VerticalAlignment="Top" DockPanel.Dock="Top" Height="20">
+            <MenuItem Header="{ns:Loc File}">
+                <MenuItem Click="MenuItem_Click_New" InputGestureText="Ctrl + N" Header="{ns:Loc New}">
+                    <MenuItem.Icon>
+                        <Image Source="/Images/add.png" MinWidth="15" MinHeight="15" Height="15" Width="15" HorizontalAlignment="Left" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Click="MenuItem_Click_Save" InputGestureText="Ctrl + S" Header="{ns:Loc Save}">
+                    <MenuItem.Icon>
+                        <Image Source="/Images/save.png" MinWidth="15" MinHeight="15" Height="15" Width="15" HorizontalAlignment="Left" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Click="MenuItem_Click_Open" InputGestureText="Ctrl + O" Header="{ns:Loc Open}">
+                    <MenuItem.Icon>
+                        <Image Source="/Images/open.png" MinWidth="15" MinHeight="15" Height="15" Width="15" HorizontalAlignment="Left" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Click="MenuItem_Click_Close" InputGestureText="Ctrl + C" Header="{ns:Loc Close}">
+                    <MenuItem.Icon>
+                        <Image Source="/Images/close.png" MinWidth="15" MinHeight="15" Height="15" Width="15" HorizontalAlignment="Left" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="{ns:Loc Edit}">
+                <MenuItem Click="MenuItem_Click_Edit" InputGestureText="Ctrl + E" Header="{ns:Loc Edit}"></MenuItem>
+                <MenuItem Click="MenuItem_Click_Delete" InputGestureText="Ctrl + D" Header="{ns:Loc Delete}"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="{ns:Loc Help}">
+                <MenuItem Click="MenuItem_Click_About" InputGestureText="Ctrl + A" Header="{ns:Loc About}"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="{ns:Loc Localization}">
+                <MenuItem Click="MenuItem_Click_Serbian" InputGestureText="Ctrl + S" Header="{ns:Loc Serbian}"></MenuItem>
+                <MenuItem Click="MenuItem_Click_English" InputGestureText="Ctrl + E" Header="{ns:Loc English}"></MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <ToolBar x:Uid="ToolWindowToolbar" DockPanel.Dock="Top" AllowDrop="False" Focusable="False" HorizontalAlignment="Stretch" Height="26">
+            <ToolBar.Resources>
+                    <Style TargetType="{x:Type ToolBarPanel}">
+                        <Setter Property="Orientation" Value="Horizontal"/>
+                    </Style>
+                </ToolBar.Resources>
+
+                <DockPanel Background="Transparent" HorizontalAlignment="Stretch">
+
+                <Image x:Name="Add" ToolTip="{ns:Loc Add}" VerticalAlignment="Stretch" Margin="5,0,5,0" Source="/Images/add.png" MouseDown="Add_MouseDown" MinWidth="15" MinHeight="15" Height="15" Width="15" HorizontalAlignment="Left" />
+                <Image x:Name="Update" ToolTip="{ns:Loc Edit}" MouseDown="Update_MouseDown" Source="/Images/update.png" MinWidth="15" Margin="5,0,5,0" MinHeight="15" Height="15" Width="15" />
+                <Image x:Name="Delete" ToolTip="{ns:Loc Delete}" HorizontalAlignment="Left" VerticalAlignment="Stretch" MouseDown="Delete_MouseDown" Margin="5,0,5,0" Source="/Images/delete.png" MinWidth="15" MinHeight="15" Height="15" Width="15" />
+                <Button x:Name="DodavanjeSefa" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="150" Content="{ns:Loc HeadOfDepartmentAdd}" Visibility="Hidden" Click="DodavanjeSefa_Click"/>
+
+                <Grid DockPanel.Dock="Right">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                </Grid> 
+
+            </DockPanel>
+            </ToolBar>
+        <DockPanel DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20,0,-20">
+            <TextBox x:Name="Search" Width="120" BorderBrush="Black" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Button Click="Button_Click_1" ToolTip="{ns:Loc Search}" Width="25" Height="25" MinWidth="15" MinHeight="15" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Image Source="/Images/search.png" HorizontalAlignment="Right" Width="20" />
+            </Button>
+        </DockPanel>
+
+        <TabControl x:Name="Glavni"  Height="300" DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Center" SelectionChanged="Glavni_SelectionChanged">
+            <TabItem x:Name="Tab_student" Header="{ns:Loc Students}" Margin="0">
+                <DataGrid x:Name="DataGridStudenti" ItemsSource="{Binding Studenti, UpdateSourceTrigger=PropertyChanged}"
+                          SelectedItem="{Binding IzabranStudent, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"
+                          AutoGenerateColumns="False" Height="250" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" IsSynchronizedWithCurrentItem="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn x:Name="red11" Header="{ns:Loc Index}" Width="100" Binding="{Binding BrojIndeksa}"/>
+                        <DataGridTextColumn x:Name="red12" Header="{ns:Loc FirstName}" Width="100" Binding="{Binding Ime}"/>
+                        <DataGridTextColumn x:Name="red13" Header="{ns:Loc LastName}" Width="100" Binding="{Binding Prezime}"/>
+                        <DataGridTextColumn x:Name="red14" Header="{ns:Loc YearOfEnrollment}" Width="100" Binding="{Binding GodUpisa}"/>
+                        <DataGridTextColumn x:Name="red15" Header="{ns:Loc Status}" Width="100" Binding="{Binding Status}"/>
+                        <DataGridTextColumn x:Name="red16" Header="{ns:Loc GPA}" Width="100" Binding="{Binding ProsecnaOcena}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem x:Name="Tab_profesor" Header="{ns:Loc Professors}" Margin="0">
+                <DataGrid x:Name="DataGridProfesori" ItemsSource="{Binding Profesori, UpdateSourceTrigger=PropertyChanged}"
+                          SelectedItem="{Binding IzabranProfesor, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"
+                          AutoGenerateColumns="False" Height="250" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" IsSynchronizedWithCurrentItem="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn x:Name="red21" Header="{ns:Loc FirstName}" Width="100" Binding="{Binding Ime}"/>
+                        <DataGridTextColumn x:Name="red22" Header="{ns:Loc LastName}" Width="100" Binding="{Binding Prezime}"/>
+                        <DataGridTextColumn x:Name="red23" Header="{ns:Loc Title}" Width="100" Binding="{Binding Zvanje}"/>
+                        <DataGridTextColumn x:Name="red24" Header="{ns:Loc Email}" Width="100" Binding="{Binding EmailAdresa}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem x:Name="Tab_predmet" Header="{ns:Loc Subjects}" Margin="0">
+                <DataGrid x:Name="DataGridPredmeti" ItemsSource="{Binding Predmeti, UpdateSourceTrigger=PropertyChanged}"
+                          SelectedItem="{Binding IzabranPredmet, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"
+                          AutoGenerateColumns="False" Height="250" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" IsSynchronizedWithCurrentItem="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn x:Name="red31" Header="{ns:Loc SubjectCode}" Width="100" Binding="{Binding SifraPredmeta}"/>
+                        <DataGridTextColumn x:Name="red32" Header="{ns:Loc SubjectName}" Width="100" Binding="{Binding NazivPredmeta}"/>
+                        <DataGridTextColumn x:Name="red33" Header="{ns:Loc ESPBNumber}" Width="100" Binding="{Binding BrojESPB}"/>
+                        <DataGridTextColumn x:Name="red34" Header="{ns:Loc MaintainingYear}" Width="100" Binding="{Binding GodinaStudija}"/>
+                        <DataGridTextColumn x:Name="red35" Header="{ns:Loc MaintainingSemester}" Width="100" Binding="{Binding Semestar}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem x:Name="Tab_katedra" Header="{ns:Loc Department}" Margin="0">
+                <DataGrid x:Name="DataGridKatedre" ItemsSource="{Binding Katedre, UpdateSourceTrigger=PropertyChanged}"
+                          SelectedItem="{Binding IzabranaKatedra, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"
+                          AutoGenerateColumns="False" Height="250" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" IsSynchronizedWithCurrentItem="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn x:Name="red41" Header="{ns:Loc DepartmentId}" Width="100" Binding="{Binding SifraKatedre}"/>
+                        <DataGridTextColumn x:Name="red42" Header="{ns:Loc DepartmentName}" Width="100" Binding="{Binding NazivKatedre}"/>
+                        <DataGridTextColumn x:Name="red43" Header="{ns:Loc HeadOfDepartment}" Width="100" Binding="{Binding SefKat}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+        
+        <StatusBar Grid.Row="1" Margin="0,0,0,0" Height="25" DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
+            <StatusBarItem>
+                <TextBlock x:Name="Sluzba" Margin="0" HorizontalAlignment="Left" ></TextBlock>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock x:Name="Entitet" Margin="0" HorizontalAlignment="Left"></TextBlock>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <TextBlock x:FieldModifier="private" x:Name="myDateTime" MinWidth="50" HorizontalAlignment="Right" Margin="0,0,20,0"/>
+            </StatusBarItem>
+        </StatusBar>
+    </DockPanel>
+</Window>

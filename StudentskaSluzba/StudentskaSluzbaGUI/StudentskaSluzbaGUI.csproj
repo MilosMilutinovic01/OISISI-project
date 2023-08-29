@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FF9791CB-1205-44D4-8C81-61CC3030BDF0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>StudentskaSluzbaGUI</RootNamespace>
+    <AssemblyName>StudentskaSluzbaGUI</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Controller\AdresaController.cs" />
+    <Compile Include="Controller\KatedraController.cs" />
+    <Compile Include="Controller\NepolozeniController.cs" />
+    <Compile Include="Controller\OcenaController.cs" />
+    <Compile Include="Controller\PorfesorController.cs" />
+    <Compile Include="Controller\PredmetController.cs" />
+    <Compile Include="Controller\StudentController.cs" />
+    <Compile Include="Localization\TranslationSource.cs" />
+    <Compile Include="Model\Adresa.cs" />
+    <Compile Include="Model\DAO\AdresaDAO.cs" />
+    <Compile Include="Model\DAO\KatedraDAO.cs" />
+    <Compile Include="Model\DAO\NepolozeniDAO.cs" />
+    <Compile Include="Model\DAO\OcenaDao.cs" />
+    <Compile Include="Model\DAO\PredmetDAO.cs" />
+    <Compile Include="Model\DAO\ProfesorDAO.cs" />
+    <Compile Include="Model\Katedra.cs" />
+    <Compile Include="Model\NepolozeniPredmeti.cs" />
+    <Compile Include="Model\Ocena.cs" />
+    <Compile Include="Model\Predmet.cs" />
+    <Compile Include="Model\Profesor.cs" />
+    <Compile Include="Model\Student.cs" />
+    <Compile Include="Model\DAO\StudentDAO.cs" />
+    <Compile Include="Observer\IObserver.cs" />
+    <Compile Include="Observer\ISubject.cs" />
+    <Compile Include="Storage\AdresaStorage.cs" />
+    <Compile Include="Storage\KatedraStorage.cs" />
+    <Compile Include="Storage\NepolozeniStorage.cs" />
+    <Compile Include="Storage\OcenaStorage.cs" />
+    <Compile Include="View\DodavanjeSefaKatedre.xaml.cs">
+      <DependentUpon>DodavanjeSefaKatedre.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dodavanje_predmeta.xaml.cs">
+      <DependentUpon>Dodavanje_predmeta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Predmet_dodavanje.xaml.cs">
+      <DependentUpon>Predmet_dodavanje.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Predmet_izmena.xaml.cs">
+      <DependentUpon>Predmet_izmena.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Profesor_dodavanje.xaml.cs">
+      <DependentUpon>Profesor_dodavanje.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Profesor_izmena.xaml.cs">
+      <DependentUpon>Profesor_izmena.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Serializer\Serializable.cs" />
+    <Compile Include="Serializer\Serializer.cs" />
+    <Compile Include="Storage\PredmetStorage.cs" />
+    <Compile Include="Storage\ProfesorStorage.cs" />
+    <Compile Include="Storage\StudentStorage.cs" />
+    <Compile Include="View\Student_dodavanje.xaml.cs">
+      <DependentUpon>Student_dodavanje.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Student_izmena.xaml.cs">
+      <DependentUpon>Student_izmena.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Unos_ocene.xaml.cs">
+      <DependentUpon>Unos_ocene.xaml</DependentUpon>
+    </Compile>
+    <Page Include="View\DodavanjeSefaKatedre.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dodavanje_predmeta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="View\Predmet_dodavanje.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Predmet_izmena.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Profesor_dodavanje.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Profesor_izmena.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Student_dodavanje.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Student_izmena.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Unos_ocene.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Resource Include="Images\add.png" />
+    <Resource Include="Images\delete.png" />
+    <Resource Include="Images\search.png" />
+    <Resource Include="Images\update.png" />
+    <Resource Include="Data\studenti.txt" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConsoleApp1\ConsoleApp1.csproj">
+      <Project>{e6f40ea1-9508-4e6d-ae32-c4aff1dadb5c}</Project>
+      <Name>ConsoleApp1</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.en-US.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\close.png" />
+    <Resource Include="Images\open.png" />
+    <Resource Include="Images\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Data\profesori.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Data\predmeti.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Data\nepolozeni.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Data\ocena.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Data\katedra.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Data\adrese.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

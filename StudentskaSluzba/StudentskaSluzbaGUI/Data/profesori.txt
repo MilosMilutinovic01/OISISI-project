@@ -1,0 +1,5 @@
+0|Milan|Rapaic|8/19/1980|Fruskogorska,1,Novi,Sad|060/390-001|rapaja@mailinator.com|Fruskogorska,1,Novi,Sad|010340982|doktor_nauka|25
+1|fasdi|dsfhu|9/19/2020|fijsd,1,dfs,dfs|929/239-231|fimasd@mailinator.com|ifasond,1,dfs,sdf|218438128|idfs|28
+2|adresa|adresa|8/19/2001|oj,1,oj,oj|123/213-123|sdfoimm@mailinator.com|op,1,op,op|123214124|fajsn_asf|32
+3|Bogosava|Mitrović|12/12/1965|Bulevar Oslobođenja,47,Novi Sad,Srbija|021/123-987|bogosava@mailinator.com|Dositeja Obradovića,6,Novi Sad,Srbija|123456789|REDOVNI_PROFESOR|19
+4|Janojla|Joksimović|12/12/1980|Dunavska,21,Novi Sad,Srbija|021/123-986|j.janojla@mailinator.com|Dositeja Obradovića,6,Novi Sad,Srbija|987654321|REDOVNI_PROFESOR|20

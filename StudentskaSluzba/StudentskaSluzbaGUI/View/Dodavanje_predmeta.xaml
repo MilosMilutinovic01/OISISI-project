@@ -1,0 +1,28 @@
+﻿<Window x:Class="StudentskaSluzbaGUI.View.Dodavanje_predmeta"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentskaSluzbaGUI.View"
+        mc:Ignorable="d"
+        Title="Dodavanje predmeta" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="ListBox1" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="3"/>
+        <Button Grid.Row="4" Grid.Column="1" Content="Dodaj" HorizontalAlignment="Right" Width="100" Height="30" VerticalAlignment="Center" Click="Button_Click_1"/>
+        <Button Grid.Row="4" Grid.Column="3" Content="Odustani" HorizontalAlignment="Left" Width="100" Height="30" VerticalAlignment="Center" Click="Button_Click"/>
+    </Grid>
+</Window>
